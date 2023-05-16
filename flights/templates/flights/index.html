@@ -11,18 +11,31 @@
             margin-bottom: 10px;
         }
         
-        a {
+        #flight-view {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             text-decoration: none;
             color: #333;
-            display: block;
             padding: 10px;
             border-radius: 5px;
             background-color: #f0f0f0;
             transition: background-color 0.3s;
         }
         
-        a:hover {
+        #flight-view:hover {
             background-color: #ccc;
+        }
+	
+        #view-details {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
         }
     </style>
 {% endblock %}
@@ -33,9 +46,10 @@
     <ul>
         {% for flight in flights %}
             <li>
-                <a href="{% url 'flight' flight.id %}">
+                <div id="flight-view">
                     Flight {{ flight.id }}: {{ flight.origin }} to {{ flight.destination }}
-                </a>
+                    <a id="view-details" href="{% url 'flight' flight.id %}">View Details</a>
+                </div>
             </li>
         {% empty %}
             <li align="center">There are currently no flights available.</li>
