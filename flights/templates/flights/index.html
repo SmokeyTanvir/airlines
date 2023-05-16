@@ -1,16 +1,46 @@
-{%extends "flights/layout.html"%}
-{%block body%}
-    <h1>Flights</h1>
+{% extends "flights/layout.html" %}
+{% block styles %}
+    <style>
+        /* Styles for the flights */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        
+        a:hover {
+            background-color: #ccc;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 align="center">Flights</h1>
 
     <ul>
-        {%for flight in flights%}
+        {% for flight in flights %}
             <li>
-                <a href="{%url 'flight' flight.id%}">
-                Flight {{flight.id}}: {{flight.origin}} to {{flight.destination}}
+                <a href="{% url 'flight' flight.id %}">
+                    Flight {{ flight.id }}: {{ flight.origin }} to {{ flight.destination }}
                 </a>
             </li>
-        {%empty%}
-            <li>No Flights</li>
-        {%endfor%}
+        {% empty %}
+            <li align="center">There are currently no flights available.</li>
+	    <br><hr>
+            <a href="admin/">Add one from the Admin panel</a>
+        {% endfor %}
     </ul>
-{%endblock%}
+{% endblock %}

@@ -1,4 +1,88 @@
 {% extends "flights/layout.html" %}
+{% block styles %}
+    <style>
+        /* Styles for the flight page */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        b {
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .passenger-section,
+        .add-passenger-section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .passenger-section:hover,
+        .add-passenger-section:hover {
+            background-color: #e0e0e0;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        select {
+            width: 200px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a:hover {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <h1>Flight {{ flight.id }}</h1>
 
@@ -8,25 +92,29 @@
         <li>Duration: <b>{{ flight.duration }} minutes</b></li>
     </ul>
 
-    <h2>Passenger</h2>
-    <ul>
-        {%for passenger in passengers%}
-            <li>{{passenger}}</li>
-        {%empty%}
-            <li>No Passengers</li>
-        {%endfor%}
-    </ul>
+    <div class="passenger-section">
+        <h2>Passengers</h2>
+        <ul>
+            {% for passenger in passengers %}
+                <li>{{ passenger }}</li>
+            {% empty %}
+                <li>No Passengers</li>
+            {% endfor %}
+        </ul>
+    </div>
 
-
-    <h2>Add Passenger</h2>
-    <form action="{%url 'book' flight.id%}" method="POST">
-        {%csrf_token%}
-        <select name="passenger">
-            {%for passenger in non_passengers%}
-                <option value={{passenger.id}}>{{passenger}}</option>
-            {%endfor%}
-        </select>
-        <input type="submit">
-    </form>
-    <a href="{%url 'index'%}">Back to flights list</a>
+    <div class="add-passenger-section">
+        <h2>Add Passenger</h2>
+        <form action="{% url 'book' flight.id %}" method="POST">
+            {% csrf_token %}
+            <select name="passenger">
+                {% for passenger in non_passengers %}
+                    <option value={{ passenger.id }}>{{ passenger }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+    
+    <a href="{% url 'index' %}">Back to flights list</a>
 {% endblock %}
