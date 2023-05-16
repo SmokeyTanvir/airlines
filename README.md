@@ -27,7 +27,7 @@ This is a Flight Management System project that allows users to view available f
   <li>Apply migrations to set up the database using ```python manage.py migrate```.</li>
   <li>Run the development server with the command ```python manage.py runserver```.</li>
   <li>Access the application in your web browser at ```http://localhost:8000```.</li>
-<ol>
+</ol>
   
 ## Project Structure
 <ul>
@@ -45,7 +45,7 @@ This is a Flight Management System project that allows users to view available f
    </ul> 
   <li>airlines/ - The Django project folder.</li>
   <li>manage.py - Command-line utility for managing the Django project.</li>
-<ul>
+</ul>
 
 ## Contributing
 Contributions are welcome! If you find any issues or want to enhance the functionality, feel free to open a pull request.
