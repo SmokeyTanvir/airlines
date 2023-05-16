@@ -23,10 +23,10 @@ This is a Flight Management System project that allows users to view available f
   <li>Clone the repository to your local machine.</li>
   <li>Make sure you have Python and Django installed.</li>
   <li>Set up a virtual environment (optional but recommended).</li>
-  <li>Install the required dependencies using ```pip install -r requirements.txt```.</li>
-  <li>Apply migrations to set up the database using ```python manage.py migrate```.</li>
-  <li>Run the development server with the command ```python manage.py runserver```.</li>
-  <li>Access the application in your web browser at ```http://localhost:8000```.</li>
+  <li>Install the required dependencies using : <b>pip install -r requirements.txt</b> .</li>
+  <li>Apply migrations to set up the database using <b>python manage.py migrate</b>.</li>
+  <li>Run the development server with the command <b>python manage.py runserver</b> .</li>
+  <li>Access the application in your web browser at <b>http://localhost:8000</b>.</li>
 </ol>
   
 ## Project Structure
